@@ -1,0 +1,1414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quezon City Hall · Serbisyo Publiko</title>
+
+  <meta
+    name="description"
+    content="Citizen services portal for recording transactions, service requests, and incoming documents."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./portal-extras.css">
+  <link rel="stylesheet" href="./resident-request-upgrade.css">
+</head>
+
+<body>
+  <!-- Reusable interface icons -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="svg-defs"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <symbol id="i-crest" viewBox="0 0 24 24">
+      <path d="M12 2.6 21 20H3L12 2.6Z"/>
+      <path d="M9.2 17.5 10.4 9.5M12 17.5V8.2M14.8 17.5 13.6 9.5M7.6 17.5h8.8"/>
+      <circle cx="12" cy="5.4" r="1.1"/>
+    </symbol>
+
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/>
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/>
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/>
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>
+    </symbol>
+
+    <symbol id="i-exchange" viewBox="0 0 24 24">
+      <path d="M4 7.5h13M14 4l3.5 3.5L14 11M20 16.5H7M10 13l-3.5 3.5L10 20"/>
+    </symbol>
+
+    <symbol id="i-clipboard" viewBox="0 0 24 24">
+      <rect x="5" y="4.5" width="14" height="16" rx="2"/>
+      <path d="M9 4.5V3.8A1.3 1.3 0 0 1 10.3 2.5h3.4A1.3 1.3 0 0 1 15 3.8v.7M8.5 10h7M8.5 13.5h7M8.5 17h4.5"/>
+    </symbol>
+
+    <symbol id="i-inbox" viewBox="0 0 24 24">
+      <path d="M4 13.5 6.2 5.8A1.5 1.5 0 0 1 7.6 4.7h8.8a1.5 1.5 0 0 1 1.4 1.1L20 13.5v4a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-4Z"/>
+      <path d="M4 13.5h4.4l1.2 2h4.8l1.2-2H20"/>
+    </symbol>
+
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="10.8" cy="10.8" r="6.3"/>
+      <path d="m15.5 15.5 4.5 4.5"/>
+    </symbol>
+
+    <symbol id="i-edit" viewBox="0 0 24 24">
+      <path d="m14.5 5.5 4 4M4.5 19.5l1-4L16 5a1.8 1.8 0 0 1 2.5 0l.5.5a1.8 1.8 0 0 1 0 2.5L8.5 18.5l-4 1Z"/>
+    </symbol>
+
+    <symbol id="i-trash" viewBox="0 0 24 24">
+      <path d="M4.5 6.5h15M9 6.5V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v1.5M6.5 6.5l.8 12a1.5 1.5 0 0 0 1.5 1.4h6.4a1.5 1.5 0 0 0 1.5-1.4l.8-12M10 10.5v5.5M14 10.5v5.5"/>
+    </symbol>
+
+    <symbol id="i-eye" viewBox="0 0 24 24">
+      <path d="M2.8 12S6.2 5.8 12 5.8 21.2 12 21.2 12 17.8 18.2 12 18.2 2.8 12 2.8 12Z"/>
+      <circle cx="12" cy="12" r="2.8"/>
+    </symbol>
+
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 3.5v11M8 10.5l4 4 4-4M4.5 17v2A1.5 1.5 0 0 0 6 20.5h12a1.5 1.5 0 0 0 1.5-1.5v-2"/>
+    </symbol>
+
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="m6 6 12 12M18 6 6 18"/>
+    </symbol>
+
+    <symbol id="i-left" viewBox="0 0 24 24">
+      <path d="m14.5 5.5-6.5 6.5 6.5 6.5"/>
+    </symbol>
+
+    <symbol id="i-right" viewBox="0 0 24 24">
+      <path d="m9.5 5.5 6.5 6.5-6.5 6.5"/>
+    </symbol>
+
+    <symbol id="i-drag" viewBox="0 0 24 24">
+      <circle cx="9" cy="6" r="1.1"/>
+      <circle cx="15" cy="6" r="1.1"/>
+      <circle cx="9" cy="12" r="1.1"/>
+      <circle cx="15" cy="12" r="1.1"/>
+      <circle cx="9" cy="18" r="1.1"/>
+      <circle cx="15" cy="18" r="1.1"/>
+    </symbol>
+
+    <symbol id="i-bookmark" viewBox="0 0 24 24">
+      <path d="M6.5 4.5A1.5 1.5 0 0 1 8 3h8a1.5 1.5 0 0 1 1.5 1.5v16L12 17l-5.5 3.5v-16Z"/>
+    </symbol>
+
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="m5 12.5 4.5 4.5L19 7.5"/>
+    </symbol>
+
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M12 7.5V12l3 2"/>
+    </symbol>
+
+    <symbol id="i-building" viewBox="0 0 24 24">
+      <path d="M4 20.5h16M5.5 20.5V9.5M18.5 20.5V9.5M3.5 9.5 12 4l8.5 5.5h-17ZM9 12.5v4M12 12.5v4M15 12.5v4"/>
+    </symbol>
+
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M4.5 12h15M14 6.5l5.5 5.5-5.5 5.5"/>
+    </symbol>
+
+    <symbol id="i-card" viewBox="0 0 24 24">
+      <rect x="3" y="5.5" width="18" height="13" rx="2"/>
+      <path d="M3 10h18M6.5 14.5h4"/>
+    </symbol>
+
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M6.8 3.5h3l1.2 4-2 1.5a12.5 12.5 0 0 0 6 6l1.5-2 4 1.2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.8 5.7a2 2 0 0 1 2-2.2Z"/>
+    </symbol>
+
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>
+    </symbol>
+
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>
+    </symbol>
+
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <!-- Top navigation -->
+  <header class="topbar">
+    <button
+      class="brand"
+      id="brandHome"
+      type="button"
+      aria-label="Quezon City Hall overview"
+    >
+      <span class="crest">
+        <svg aria-hidden="true"><use href="#i-crest"></use></svg>
+      </span>
+
+      <span class="brand-copy">
+        <strong>Quezon City Hall</strong>
+        <small data-i18n="brand_sub">
+          Citizen services portal · Lungsod Quezon
+        </small>
+      </span>
+    </button>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <button type="button" data-nav="overview" class="active">
+        <svg aria-hidden="true"><use href="#i-grid"></use></svg>
+        <span data-i18n="nav_overview">Overview</span>
+      </button>
+
+      <button type="button" data-nav="transactions">
+        <svg aria-hidden="true"><use href="#i-exchange"></use></svg>
+        <span data-i18n="nav_transactions">Transactions</span>
+      </button>
+
+      <button type="button" data-nav="requests">
+        <svg aria-hidden="true"><use href="#i-clipboard"></use></svg>
+        <span data-i18n="nav_requests">Requests</span>
+      </button>
+<button
+  type="button"
+  data-nav="staffQueue"
+>
+  <svg aria-hidden="true">
+    <use href="#i-inbox"></use>
+  </svg>
+
+  <span>
+    Staff Queue
+  </span>
+</button>
+      <button type="button" data-nav="received">
+        <svg aria-hidden="true"><use href="#i-inbox"></use></svg>
+        <span data-i18n="nav_received">Received</span>
+      </button>
+
+      <button type="button" data-nav="services">
+        <svg aria-hidden="true"><use href="#i-clipboard"></use></svg>
+        <span>Services</span>
+      </button>
+
+      <button type="button" data-nav="admin" id="adminNavBtn" hidden>
+        <svg aria-hidden="true"><use href="#i-user"></use></svg>
+        <span>Admin</span>
+      </button>
+    </nav>
+
+    <div class="top-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="langEn" aria-pressed="true">EN</button>
+        <button type="button" id="langFil" aria-pressed="false">FIL</button>
+      </div>
+
+      <span class="today" id="todayLabel"></span>
+
+      <button class="btn primary" id="newRecordBtn" type="button">
+        <svg aria-hidden="true"><use href="#i-plus"></use></svg>
+        <span data-i18n="new_record">New record</span>
+      </button>
+
+      <button class="btn" id="openAuthBtn" type="button">
+        <svg aria-hidden="true"><use href="#i-user"></use></svg>
+        <span data-i18n="sign_in">Sign in</span>
+      </button>
+
+      <div class="user-menu" id="userMenu" hidden>
+        <button
+          class="user-chip"
+          id="userChipBtn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="userDropdown"
+        >
+          <span class="user-avatar" id="userAvatar">RC</span>
+
+          <span class="user-info">
+            <strong id="userDisplayName">Staff</strong>
+            <small id="userDisplayRole">Service Desk</small>
+          </span>
+        </button>
+
+        <div class="user-dropdown" id="userDropdown" hidden>
+          <div class="user-dropdown-head">
+            <strong id="dropUserName"></strong>
+            <small id="dropUserEmail"></small>
+            <span class="badge info" id="dropUserBadge"></span>
+          </div>
+
+          <button type="button" id="logoutBtn" class="danger-item">
+            <svg aria-hidden="true"><use href="#i-logout"></use></svg>
+            <span data-i18n="sign_out">Sign out</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content is outside the header -->
+  <main id="mainContent" tabindex="-1">
+    <noscript>
+      <div class="no-script">
+        JavaScript is required to load records and use this portal.
+      </div>
+    </noscript>
+
+    <section
+      class="page"
+      id="overviewPage"
+      aria-labelledby="overviewTitle"
+    >
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow light">
+            <svg class="eyebrow-sun" aria-hidden="true">
+              <use href="#i-sun"></use>
+            </svg>
+
+            <span data-i18n="hero_eyebrow">
+              Lungsod Quezon · Metro Manila, Philippines
+            </span>
+          </p>
+
+          <p class="welcome-line" id="welcomeLine" hidden></p>
+
+          <h1 id="overviewTitle" data-i18n="hero_title">
+            City services, in one place.
+          </h1>
+
+          <p id="heroBody" data-i18n="hero_body">
+            Record payments, track resident requests, and log incoming
+            documents for the 142 barangays of Quezon City.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn gold" type="button" data-quick="transaction">
+              <svg aria-hidden="true"><use href="#i-plus"></use></svg>
+              <span data-i18n="hero_cta1">New transaction</span>
+            </button>
+
+            <button class="btn ghost-light" type="button" data-quick="request">
+              <span data-i18n="hero_cta2">Submit a request</span>
+            </button>
+          </div>
+        </div>
+
+        <svg class="hero-art" viewBox="0 0 360 200" aria-hidden="true">
+          <g class="sun-group">
+            <circle cx="300" cy="42" r="17"/>
+            <path d="M300 13v8M300 63v8M271 42h8M321 42h8M279.5 21.5l5.7 5.7M314.8 56.8l5.7 5.7M320.5 21.5l-5.7 5.7M285.2 56.8l-5.7 5.7"/>
+          </g>
+
+          <ellipse cx="176" cy="176" rx="152" ry="13"/>
+          <path d="M84 163h184M96 163v-9h160v9"/>
+          <path d="M112 154 126 46h10l14 108M162 154 174 30h12l12 124M212 154 226 46h10l14 108"/>
+          <path d="M126 46l5-9 5 9M174 30l6-10 6 10M226 46l5-9 5 9"/>
+          <path d="M132 96h84M138 74h72"/>
+          <path d="M40 163v-26h34v26M286 163v-34h40v34M296 141h8M312 141h8M296 152h8M312 152h8M50 147h14"/>
+        </svg>
+      </div>
+
+      <div class="stats" id="statsGrid" aria-label="Service summary"></div>
+
+      <div class="overview-grid">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2 data-i18n="recent_title">Recent activity</h2>
+              <p class="subtle" data-i18n="recent_sub">
+                Latest records across the service desk.
+              </p>
+            </div>
+
+            <button class="btn small" id="viewAllBtn" type="button">
+              <span data-i18n="view_all">View transactions</span>
+              <svg aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </button>
+          </div>
+
+          <div class="recent-list" id="recentList"></div>
+        </div>
+
+        <aside class="card quick-card" aria-labelledby="quickTitle">
+          <h2 id="quickTitle" data-i18n="quick_title">Start a service</h2>
+
+          <button class="quick-action" type="button" data-quick="transaction">
+            <span class="quick-icon blue">
+              <svg aria-hidden="true"><use href="#i-card"></use></svg>
+            </span>
+
+            <span>
+              <strong data-i18n="quick_txn">New transaction</strong>
+              <small data-i18n="quick_txn_sub">Log a fee, permit, or payment</small>
+            </span>
+
+            <svg class="quick-arrow" aria-hidden="true">
+              <use href="#i-right"></use>
+            </svg>
+          </button>
+
+          <button class="quick-action" type="button" data-quick="request">
+            <span class="quick-icon gold">
+              <svg aria-hidden="true"><use href="#i-clipboard"></use></svg>
+            </span>
+
+            <span>
+              <strong data-i18n="quick_req">New request</strong>
+              <small data-i18n="quick_req_sub">Report an issue or ask for help</small>
+            </span>
+
+            <svg class="quick-arrow" aria-hidden="true">
+              <use href="#i-right"></use>
+            </svg>
+          </button>
+
+          <button class="quick-action" type="button" data-quick="received">
+            <span class="quick-icon purple">
+              <svg aria-hidden="true"><use href="#i-inbox"></use></svg>
+            </span>
+
+            <span>
+              <strong data-i18n="quick_rec">Receive a document</strong>
+              <small data-i18n="quick_rec_sub">Register an incoming paper or file</small>
+            </span>
+
+            <svg class="quick-arrow" aria-hidden="true">
+              <use href="#i-right"></use>
+            </svg>
+          </button>
+
+          <div class="desk-note">
+            <svg aria-hidden="true"><use href="#i-clock"></use></svg>
+
+            <p>
+              <strong data-i18n="desk_title">Service desk hours</strong>
+              <br>
+              <span data-i18n="desk_body">
+                Monday–Friday, 8:00 AM–5:00 PM · Quezon Memorial Circle, Diliman
+              </span>
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="overview-grid-2">
+        <div class="card chart-card" id="residentStatusCard" hidden>
+          <div class="card-head">
+            <div>
+              <h2>My requests by status</h2>
+              <p class="subtle">Where each of your requests stands</p>
+            </div>
+
+            <span class="chart-unit" id="residentStatusUnit"></span>
+          </div>
+
+          <div class="chart-body" id="residentStatusChart"></div>
+        </div>
+
+        <div class="card chart-card" id="collectionsCard">
+          <div class="card-head">
+            <div>
+              <h2 data-i18n="chart_title">Collections by service</h2>
+              <p class="subtle" data-i18n="chart_sub">
+                Completed transactions, Philippine peso
+              </p>
+            </div>
+
+            <span class="chart-unit">PHP</span>
+          </div>
+
+          <div class="chart-body" id="collectionsChart"></div>
+        </div>
+
+        <div class="card chart-card" id="barangayCard">
+          <div class="card-head">
+            <div>
+              <h2 data-i18n="brgy_title">Open requests by barangay</h2>
+              <p class="subtle" data-i18n="brgy_sub">
+                Barangays with the most open concerns
+              </p>
+            </div>
+
+            <span class="chart-unit" id="brgyUnit">142 barangays</span>
+          </div>
+
+          <div class="chart-body" id="barangayChart"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section
+      class="page"
+      id="servicesPage"
+      hidden
+      aria-labelledby="servicesTitle"
+    >
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Quezon City / City Programs</p>
+          <h1 id="servicesTitle">QC e-Services Directory</h1>
+          <p class="subtle">
+            A one-stop list of the online city services available to
+            Quezon City residents.
+          </p>
+        </div>
+      </div>
+
+      <div class="notice demo-notice" role="note">
+        <strong>Independent demo project.</strong>
+        This is not the official website of the Quezon City Government.
+        For real applications and payments, use the official
+        <a
+          href="https://quezoncity.gov.ph/program/qc-eservices/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >QC e-Services</a>.
+      </div>
+
+      <div class="services-intro card">
+        <p>
+          The Quezon City Government's QC e-Services platform lists
+          <strong>241 online services across 34 categories</strong>
+          (as of the page's May 11, 2026 update). The 15 main service
+          groups are listed below.
+        </p>
+
+        <label class="search-field">
+          <svg aria-hidden="true"><use href="#i-search"></use></svg>
+
+          <input
+            id="servicesSearch"
+            type="search"
+            placeholder="Search services…"
+            aria-label="Search services"
+          >
+        </label>
+      </div>
+
+      <div class="service-grid" id="servicesGrid"></div>
+
+      <div class="empty-state" id="servicesEmpty" hidden>
+        <svg aria-hidden="true"><use href="#i-search"></use></svg>
+        <h3>No services found</h3>
+        <p>Try a different search word.</p>
+      </div>
+
+      <p class="subtle services-source">
+        Service names come from the official QC e-Services page.
+        Descriptions are short summaries written for this project;
+        see the official page for requirements, fees and processing.
+        Questions? Call the QC helpline <strong>122</strong>.
+      </p>
+    </section>
+
+    <section
+      class="page"
+      id="adminPage"
+      hidden
+      aria-labelledby="adminTitle"
+    >
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Quezon City Hall / Administration</p>
+          <h1 id="adminTitle">Administration</h1>
+          <p class="subtle">
+            Manage portal accounts and monitor activity across the
+            service desk.
+          </p>
+        </div>
+
+        <div class="head-actions">
+          <button class="btn" id="adminRefreshBtn" type="button">
+            <svg aria-hidden="true"><use href="#i-clock"></use></svg>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="stats admin-stats" id="adminStats" aria-label="Portal summary"></div>
+
+      <div class="admin-grid">
+        <div class="card table-card">
+          <div class="card-head">
+            <div>
+              <h2>User accounts</h2>
+              <p class="subtle" id="adminUserCount">Loading…</p>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-field">
+              <svg aria-hidden="true"><use href="#i-search"></use></svg>
+
+              <input
+                id="adminSearch"
+                type="search"
+                placeholder="Search name or email…"
+                aria-label="Search users"
+              >
+            </label>
+
+            <select id="adminRoleFilter" aria-label="Filter by role">
+              <option value="">All roles</option>
+              <option value="resident">Residents</option>
+              <option value="staff">Staff</option>
+              <option value="admin">Administrators</option>
+            </select>
+
+            <select id="adminStatusFilter" aria-label="Filter by status">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Deactivated</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table class="user-table" aria-label="User accounts">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Barangay</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Last sign-in</th>
+                  <th><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="adminUserBody"></tbody>
+            </table>
+
+            <div class="empty-state" id="adminEmpty" hidden>
+              <svg aria-hidden="true"><use href="#i-search"></use></svg>
+              <h3>No users found</h3>
+              <p>Try another search or clear the filters.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card activity-card">
+          <div class="card-head">
+            <div>
+              <h2>Recent activity</h2>
+              <p class="subtle">Latest changes across all records</p>
+            </div>
+          </div>
+
+          <div class="timeline admin-timeline" id="adminActivity"></div>
+        </aside>
+      </div>
+    </section>
+    <section
+  class="page"
+  id="staffQueuePage"
+  hidden
+>
+  <div class="page-head">
+    <div>
+      <h1>Staff Queue</h1>
+      <p class="subtle">
+        Assigned and pending requests
+      </p>
+    </div>
+  </div>
+
+  <div class="card table-card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tracking No</th>
+            <th>Title</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned Staff</th>
+          </tr>
+        </thead>
+
+        <tbody id="staffQueueBody">
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</section>
+
+    <section
+      class="page"
+      id="recordsPage"
+      hidden
+      aria-labelledby="recordsTitle"
+    >
+      <div class="page-head">
+        <div>
+          <p class="eyebrow" id="recordsEyebrow">
+            Quezon City Hall / Transactions
+          </p>
+
+          <h1 id="recordsTitle">Transactions</h1>
+          <p class="subtle" id="recordsSubtitle"></p>
+        </div>
+
+        <div class="head-actions">
+          <button class="btn" id="exportBtn" type="button">
+            <svg aria-hidden="true"><use href="#i-download"></use></svg>
+            <span data-i18n="export_csv">Export CSV</span>
+          </button>
+
+          <button class="btn primary" id="pageNewBtn" type="button">
+            <svg aria-hidden="true"><use href="#i-plus"></use></svg>
+            <span id="pageNewLabel">New transaction</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mini-stats" id="miniStats"></div>
+
+      <div class="card table-card">
+        <div class="toolbar">
+          <label class="search-field">
+            <svg aria-hidden="true"><use href="#i-search"></use></svg>
+
+            <input
+              id="searchInput"
+              type="search"
+              data-i18n-ph="search_ph"
+              placeholder="Search records…"
+              aria-label="Search records"
+            >
+          </label>
+
+          <select id="statusFilter" aria-label="Filter by status"></select>
+          <select id="categoryFilter" aria-label="Filter by category"></select>
+          <select id="barangayFilter" aria-label="Filter by barangay"></select>
+
+          <select id="sortSelect" aria-label="Sort records">
+            <option value="newest" data-i18n="sort_newest">Newest first</option>
+            <option value="oldest" data-i18n="sort_oldest">Oldest first</option>
+            <option value="name" data-i18n="sort_name">Name A–Z</option>
+            <option value="amount" data-i18n="sort_amount">Amount high–low</option>
+            <option value="custom" data-i18n="sort_custom">Custom order</option>
+          </select>
+
+          <div class="saved-views">
+            <select id="savedViewsSelect" aria-label="Saved views"></select>
+
+            <button
+              class="icon-btn"
+              id="saveViewBtn"
+              type="button"
+              title="Save current view"
+              aria-label="Save current view"
+            >
+              <svg aria-hidden="true"><use href="#i-bookmark"></use></svg>
+            </button>
+
+            <button
+              class="icon-btn"
+              id="deleteViewBtn"
+              type="button"
+              title="Delete saved view"
+              aria-label="Delete saved view"
+              hidden
+            >
+              <svg aria-hidden="true"><use href="#i-trash"></use></svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="drag-hint" id="dragHint" hidden data-i18n="drag_hint">
+          Custom order is on — drag the handle to rearrange rows.
+        </p>
+
+        <div class="bulk-bar" id="bulkBar" hidden>
+          <strong id="bulkCount">0 selected</strong>
+
+          <button class="btn small" id="bulkAdvanceBtn" type="button">
+            <svg aria-hidden="true"><use href="#i-check"></use></svg>
+            <span data-i18n="bulk_advance">Advance status</span>
+          </button>
+
+          <button class="btn small danger-quiet" id="bulkDeleteBtn" type="button">
+            <svg aria-hidden="true"><use href="#i-trash"></use></svg>
+            <span data-i18n="delete">Delete</span>
+          </button>
+
+          <button
+            class="btn small ghost"
+            id="clearSelectionBtn"
+            type="button"
+            data-i18n="clear"
+          >
+            Clear
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table id="recordsTable" aria-labelledby="recordsTitle">
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <svg aria-hidden="true"><use href="#i-search"></use></svg>
+
+            <h3 data-i18n="empty_title">No records found</h3>
+            <p data-i18n="empty_body">
+              Try another search or clear the filters.
+            </p>
+
+            <button
+              class="btn"
+              id="clearFiltersBtn"
+              type="button"
+              data-i18n="clear_filters"
+            >
+              Clear filters
+            </button>
+          </div>
+        </div>
+
+        <div class="table-footer">
+          <span id="rangeLabel" class="subtle"></span>
+
+          <div class="pagination">
+            <button
+              class="icon-btn"
+              id="prevPageBtn"
+              type="button"
+              aria-label="Previous page"
+            >
+              <svg aria-hidden="true"><use href="#i-left"></use></svg>
+            </button>
+
+            <span id="pageLabel"></span>
+
+            <button
+              class="icon-btn"
+              id="nextPageBtn"
+              type="button"
+              aria-label="Next page"
+            >
+              <svg aria-hidden="true"><use href="#i-right"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>
+      <svg aria-hidden="true"><use href="#i-building"></use></svg>
+      <span data-i18n="footer_address">
+        Quezon City Hall · Quezon Memorial Circle, Elliptical Road,
+        Diliman, Quezon City, Metro Manila
+      </span>
+    </span>
+
+    <span>
+      <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+      <span data-i18n="footer_hotline">
+        QC Hotline 122 · Emergency 911
+      </span>
+    </span>
+
+    <span class="footer-note">
+      Independent demo project · not an official Quezon City
+      Government website.
+    </span>
+
+    <span data-i18n="footer_hours">
+      Mon–Fri, 8:00 AM–5:00 PM
+    </span>
+  </footer>
+
+  <!-- Record form -->
+  <dialog id="recordDialog" class="modal" aria-labelledby="formTitle">
+    <form id="recordForm" novalidate>
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow" id="formEyebrow">New record</p>
+          <h2 id="formTitle">New transaction</h2>
+        </div>
+
+        <button
+          class="icon-btn"
+          type="button"
+          data-close="recordDialog"
+          aria-label="Close form"
+        >
+          <svg aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="dialog-body form-grid">
+        <label class="field">
+          <span data-i18n="form_type">Record type</span>
+
+          <select id="fType" required>
+            <option value="transaction" data-i18n="type_transaction">
+              Transaction
+            </option>
+            <option value="request" data-i18n="type_request">
+              Service request
+            </option>
+            <option value="received" data-i18n="type_received">
+              Received document
+            </option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="form_category">Category</span>
+          <select id="fCategory" required></select>
+          <small class="field-error" data-error="category"></small>
+        </label>
+
+        <label class="field span-2">
+          <span id="fTitleLabel">Service / description</span>
+
+          <input
+            id="fTitle"
+            type="text"
+            maxlength="100"
+            required
+            placeholder="e.g. Business permit renewal"
+          >
+
+          <small class="field-error" data-error="title"></small>
+        </label>
+
+        <label class="field">
+          <span data-i18n="form_name">Resident / sender name</span>
+
+          <input
+            id="fName"
+            type="text"
+            maxlength="80"
+            required
+            data-i18n-ph="ph_name"
+            placeholder="Full name or organization"
+          >
+
+          <small class="field-error" data-error="name"></small>
+        </label>
+
+        <label class="field">
+          <span>
+            <span data-i18n="form_email">Email</span>
+            <em data-i18n="optional">(optional)</em>
+          </span>
+
+          <input
+            id="fEmail"
+            type="email"
+            maxlength="100"
+            placeholder="pangalan@example.com"
+          >
+
+          <small class="field-error" data-error="email"></small>
+        </label>
+
+        <label class="field">
+          <span data-i18n="form_date">Date</span>
+          <input id="fDate" type="date" required>
+          <small class="field-error" data-error="date"></small>
+        </label>
+
+        <label class="field">
+          <span data-i18n="form_barangay">Barangay</span>
+          <select id="fBarangay" required></select>
+        </label>
+
+        <label class="field" id="amountField">
+          <span data-i18n="form_amount">Amount (PHP)</span>
+          <input id="fAmount" type="number" min="0" step="0.01" placeholder="0.00">
+          <small class="field-error" data-error="amount"></small>
+        </label>
+
+        <label class="field" id="priorityField" hidden>
+          <span data-i18n="form_priority">Priority</span>
+
+          <select id="fPriority">
+            <option value="Low" data-i18n="priority_low">Low</option>
+            <option value="Normal" selected data-i18n="priority_normal">
+              Normal
+            </option>
+            <option value="High" data-i18n="priority_high">High</option>
+          </select>
+        </label>
+
+        <label class="field" id="methodField">
+          <span data-i18n="form_method">Payment method</span>
+          <select id="fMethod"></select>
+        </label>
+
+        <label class="field" id="sourceField" hidden>
+          <span data-i18n="form_source">Received through</span>
+          <select id="fSource"></select>
+        </label>
+
+        <label class="field span-2" id="locationField" hidden>
+          <span>
+            <span data-i18n="form_location">Location</span>
+            <em data-i18n="optional">(optional)</em>
+          </span>
+
+          <input
+            id="fLocation"
+            type="text"
+            maxlength="100"
+            data-i18n-ph="ph_location"
+            placeholder="Street, avenue, or facility"
+          >
+        </label>
+
+        <label class="field" id="statusField" hidden>
+  <span data-i18n="form_status">Status</span>
+  <select id="fStatus" required></select>
+</label>
+
+        <label class="field span-2">
+          <span>
+            <span data-i18n="form_notes">Notes</span>
+            <em data-i18n="optional">(optional)</em>
+          </span>
+
+          <textarea
+            id="fNotes"
+            rows="3"
+            maxlength="600"
+            data-i18n-ph="ph_notes"
+            placeholder="Add helpful context for the next person handling this record."
+          ></textarea>
+        </label>
+      </div>
+
+      <footer class="dialog-foot">
+        <button
+          class="btn"
+          type="button"
+          data-close="recordDialog"
+          data-i18n="cancel"
+        >
+          Cancel
+        </button>
+
+        <button class="btn primary" type="submit" id="saveRecordBtn">
+          Save transaction
+        </button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Record details -->
+  <dialog id="detailDialog" class="drawer" aria-labelledby="detailTitle">
+    <div class="drawer-shell">
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow" id="detailEyebrow">Record details</p>
+          <h2 id="detailTitle">Record</h2>
+        </div>
+
+        <button
+          class="icon-btn"
+          type="button"
+          data-close="detailDialog"
+          aria-label="Close details"
+        >
+          <svg aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="drawer-body" id="detailBody"></div>
+      <footer class="dialog-foot drawer-foot" id="detailActions"></footer>
+    </div>
+  </dialog>
+
+  <!-- Delete confirmation -->
+  <dialog id="confirmDialog" class="modal small" aria-labelledby="confirmTitle">
+    <header class="dialog-head">
+      <h2 id="confirmTitle">Delete records?</h2>
+
+      <button
+        class="icon-btn"
+        type="button"
+        data-close="confirmDialog"
+        aria-label="Close confirmation"
+      >
+        <svg aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </header>
+
+    <div class="dialog-body">
+      <p id="confirmMessage"></p>
+    </div>
+
+    <footer class="dialog-foot">
+      <button
+        class="btn"
+        type="button"
+        data-close="confirmDialog"
+        data-i18n="cancel"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="btn danger"
+        id="confirmActionBtn"
+        type="button"
+        data-i18n="delete"
+      >
+        Delete
+      </button>
+    </footer>
+  </dialog>
+
+  <!-- Save view -->
+  <dialog id="viewDialog" class="modal small" aria-labelledby="viewTitle">
+    <form id="viewForm" novalidate>
+      <header class="dialog-head">
+        <h2 id="viewTitle" data-i18n="view_title">Save current view</h2>
+
+        <button
+          class="icon-btn"
+          type="button"
+          data-close="viewDialog"
+          aria-label="Close save view"
+        >
+          <svg aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="dialog-body">
+        <label class="field">
+          <span data-i18n="view_name">View name</span>
+
+          <input
+            id="viewName"
+            type="text"
+            maxlength="40"
+            required
+            placeholder="e.g. Pending amilyar this week"
+          >
+        </label>
+
+        <p class="hint" data-i18n="view_hint">
+          Saves this page’s search, filters, and sort order.
+        </p>
+
+        <small class="field-error" id="viewError"></small>
+      </div>
+
+      <footer class="dialog-foot">
+        <button
+          class="btn"
+          type="button"
+          data-close="viewDialog"
+          data-i18n="cancel"
+        >
+          Cancel
+        </button>
+
+        <button class="btn primary" type="submit" data-i18n="view_save">
+          Save view
+        </button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Notifications -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <svg class="toast-icon" aria-hidden="true">
+      <use href="#i-check"></use>
+    </svg>
+
+    <span id="toastMessage"></span>
+
+    <button
+      class="toast-action"
+      id="toastActionBtn"
+      type="button"
+      hidden
+    ></button>
+
+    <button
+      class="icon-btn toast-close"
+      id="toastCloseBtn"
+      type="button"
+      aria-label="Dismiss notification"
+    >
+      <svg aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+
+  <!-- Authentication -->
+  <dialog id="authDialog" class="modal small" aria-labelledby="authTitle">
+    <form id="authForm" novalidate>
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow" data-i18n="auth_eyebrow">
+            QC Citizen & Staff Portal
+          </p>
+
+          <h2 id="authTitle">Sign in</h2>
+        </div>
+
+        <button
+          type="button"
+          class="icon-btn"
+          data-close="authDialog"
+          aria-label="Close sign in"
+        >
+          <svg aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="dialog-body">
+        <div class="auth-tabs">
+          <button
+            type="button"
+            class="auth-tab active"
+            data-auth-mode="login"
+          >
+            Sign In
+          </button>
+
+          <button
+            type="button"
+            class="auth-tab"
+            data-auth-mode="register"
+          >
+            Register
+          </button>
+        </div>
+
+        <p class="auth-intro" id="authIntro" hidden>
+          Create a resident account to submit and track service requests
+          with Quezon City Hall. All fields are required.
+        </p>
+
+        <label class="field" id="authNameField" hidden>
+          <span data-i18n="auth_fullname">Full name</span>
+          <input
+            type="text"
+            id="aName"
+            autocomplete="name"
+            maxlength="100"
+            placeholder="Juan Dela Cruz"
+            aria-describedby="aNameHint aNameError"
+          >
+          <small class="field-hint" id="aNameHint">
+            Enter your name as it appears on your valid ID.
+          </small>
+          <small class="field-error" id="aNameError" data-auth-error="name" role="alert"></small>
+        </label>
+
+        <label class="field" id="authEmailField">
+          <span>Email</span>
+          <input
+            type="email"
+            id="aEmail"
+            autocomplete="email"
+            inputmode="email"
+            autocapitalize="none"
+            spellcheck="false"
+            maxlength="150"
+            placeholder="name@example.com"
+            aria-describedby="aEmailError"
+          >
+          <small class="field-error" id="aEmailError" data-auth-error="email" role="alert"></small>
+        </label>
+
+        <label class="field" id="authPasswordField">
+          <span data-i18n="auth_password">Password</span>
+
+          <span class="pw-wrap">
+            <input
+              type="password"
+              id="aPassword"
+              autocomplete="current-password"
+              maxlength="72"
+              aria-describedby="aPwRules aPasswordError"
+            >
+
+            <button
+              type="button"
+              class="pw-toggle"
+              data-pw-toggle="aPassword"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3l18 18M10.6 5.2A9.7 9.7 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4M6.3 6.4A17 17 0 0 0 2 12s3.6 7 10 7a9.6 9.6 0 0 0 4.2-1M9.9 9.9a3 3 0 0 0 4.2 4.2"/>
+              </svg>
+            </button>
+          </span>
+
+          <small class="field-hint warn" id="aCapsWarn" hidden>
+            Caps Lock is on.
+          </small>
+          <small class="field-error" id="aPasswordError" data-auth-error="password" role="alert"></small>
+        </label>
+
+        <div class="pw-meter" id="aPwMeter" data-score="0" hidden>
+          <div class="pw-bars" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </div>
+          <span class="pw-label" id="aPwLabel" aria-live="polite">
+            Enter a password
+          </span>
+        </div>
+
+        <ul class="pw-rules" id="aPwRules" hidden></ul>
+
+        <label class="field" id="authConfirmField" hidden>
+          <span>Confirm password</span>
+
+          <span class="pw-wrap">
+            <input
+              type="password"
+              id="aConfirm"
+              autocomplete="new-password"
+              maxlength="72"
+              aria-describedby="aConfirmError"
+            >
+
+            <button
+              type="button"
+              class="pw-toggle"
+              data-pw-toggle="aConfirm"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3l18 18M10.6 5.2A9.7 9.7 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4M6.3 6.4A17 17 0 0 0 2 12s3.6 7 10 7a9.6 9.6 0 0 0 4.2-1M9.9 9.9a3 3 0 0 0 4.2 4.2"/>
+              </svg>
+            </button>
+          </span>
+
+          <small class="field-error" id="aConfirmError" data-auth-error="confirm" role="alert"></small>
+        </label>
+
+        <label class="field" id="authRoleField" hidden>
+          <span data-i18n="auth_role">Account Type</span>
+
+          <select id="aRole">
+            <option value="resident">QC Resident</option>
+            <option value="staff">City Hall Staff</option>
+          </select>
+        </label>
+
+        <label class="field" id="authBrgyField" hidden>
+          <span>Barangay</span>
+
+          <select
+            id="aBarangay"
+            aria-required="true"
+            aria-describedby="aBarangayHint aBarangayError"
+          >
+            <option value="">Select your barangay</option>
+          </select>
+
+          <small class="field-hint" id="aBarangayHint">
+            Choose the barangay where you live (142 in Quezon City).
+          </small>
+
+          <small
+            class="field-error"
+            id="aBarangayError"
+            data-auth-error="barangay"
+            role="alert"
+          ></small>
+        </label>
+
+        <div class="field consent" id="authConsentField" hidden>
+          <label class="check-row">
+            <input type="checkbox" id="aConsent" aria-describedby="aConsentError">
+
+            <span>
+              I confirm that the information I provided is accurate, and I
+              agree to Quezon City Hall processing my personal data to
+              deliver city services, in line with the Data Privacy Act of
+              2012 (RA 10173).
+            </span>
+          </label>
+
+          <small class="field-error" id="aConsentError" data-auth-error="consent" role="alert"></small>
+        </div>
+
+        <small id="authGeneralError" class="field-error" role="alert"></small>
+
+        <div class="demo-accounts" id="demoAccountsBox">
+          <strong data-i18n="demo_hint">Quick demo login:</strong>
+
+          <div class="demo-pills">
+            <button
+              type="button"
+              class="btn small"
+              data-demo="staff@quezoncity.gov.ph"
+            >
+              Staff Demo
+            </button>
+
+            <button
+              type="button"
+              class="btn small"
+              data-demo="resident@example.ph"
+            >
+              Resident Demo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="dialog-foot">
+        <button type="submit" class="btn primary" id="authSubmitBtn">
+          Sign In
+        </button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="./config.js"></script>
+  <script src="./validation.js"></script>
+  <script src="./supabase-api.js"></script>
+  <script src="./resident-request-upgrade.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
